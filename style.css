@@ -1,0 +1,91 @@
+body {
+    display:flex;
+    flex-direction: column;
+    flex:1;
+    max-width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#title {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+div#display {
+    display: flex;
+    flex: 1;
+    justify-content: right;
+    font-size: 62pt;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+div#display p {
+    margin: 10px 10px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 100%;
+}
+
+button {
+    font-size: 42pt;
+    padding: 10px 0 10px 0;
+    width: 150px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+/* #firstRow {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+}
+#secondRow {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+}
+#thirdRow {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+}
+#fourthRow {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    align-items: center;
+}
+#fifthRow {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    
+    align-items: center;
+    justify-content: flex-end;
+} */
