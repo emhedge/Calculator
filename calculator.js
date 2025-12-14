@@ -24,8 +24,8 @@ const divide = (a, b) => a / b;
 // }
 
 // init declaration of numbers and operator
-let num1 = 0;
-let num2 = 0;
+let num1 = "";
+let num2 = "";
 let operator = "";
 
 // operate function
@@ -54,14 +54,21 @@ const numSix = document.querySelector("#numSix");
 const numSeven = document.querySelector("#numSeven");
 const numEight = document.querySelector("#numEight");
 const numNine = document.querySelector("#numNine");
-
-
+const plus = document.querySelector("#plus");
+const minus = document.querySelector("#minus");
+const quotient = document.querySelector("#quotient");
+const product = document.querySelector("#product");
 
 
 // update display function
 const display = document.querySelector("div#display");
 const displayText = document.createElement('p');
 displayText.textContent = "";
+
+// variables for num1, num2, and operator displayText; 
+// when a button is selected, have a switch/if condition to determine if it's num1 or num2
+// append the number to display as displayText
+
 
 display.appendChild(displayText);
 // function updateDisplay() {
@@ -72,40 +79,31 @@ display.appendChild(displayText);
 const buttons = document.querySelector("#buttons");
 buttons.addEventListener("click", (event) => {
     let target = event.target;
+    let digit = target.textContent;
+    
 
-    switch(target.id) {
-        case "numZero":
-            displayText.textContent = "0"
-            break;
-        case "numOne":
-            displayText.textContent = "1"
-            break;
-        case "numTwo":
-            displayText.textContent = "2"
-            break;
-        case "numThree":
-            displayText.textContent = "3"
-            break;
-        case "numFour":
-            displayText.textContent = "4"
-            break;
-        case "numFive":
-            displayText.textContent = "5"
-            break;
-        case "numSix":
-            displayText.textContent = "6"
-            break;
-        case "numSeven":
-            displayText.textContent = "7"
-            break;
-        case "numEight":
-            displayText.textContent = "8"
-            break;
-        case "numNine":
-            displayText.textContent = "9"
-            break;
+    // number logic
+    if (target.className == "number") {
+        // find digit via target.textContent (the text on btn)
+        // if operator is empty, append to num1; else to num2
+        if (operator == "") {
+            num1 += digit;
+        } else {
+            num2 += digit;
+        }
+        
+    } 
+    if (target.className == "operator") {
+        operator = target.textContent
     }
-})
+    
+    displayText.textContent = num1 + operator + num2
+
+
+    }
+    
+    // ${operator} ${num2}
+)
 
 
 
