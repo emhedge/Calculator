@@ -1,8 +1,11 @@
-// basic calculations
-const add = (a, b) => a + b;
-const subtract = (a, b) => a - b;
-const multiply = (a, b) => a * b;
-const divide = (a, b) => a / b;
+// operator functions
+const operators = {
+    "+": (a, b) => a + b,
+    "-": (a, b) => a - b,
+    "*": (a, b) => a * b,
+    "/": (a, b) => a / b,
+}
+
 
 // const sum = function(arr) {return arr.reduce(((acc, obj) => acc + obj), 0)}
 
@@ -30,14 +33,17 @@ let operator = "";
 
 // operate function
 function operate(num1, operator, num2) {
-    if (operator == "+") {
-        return add(num1, num2)
+    let num1Int = Number(num1);
+    let num2Int = Number(num2);
+    
+    if (operator === "+") {
+        return operators["+"](num1Int, num2Int)
     } else if (operator === "-") {
-        return subtract(num1, num2)
+        return operators["-"](num1Int, num2Int)
     } else if (operator === "*") {
-        return multiply(num1, num2)
+        return operators["*"](num1Int, num2Int)
     } else if (operator === "/") {
-        return divide(num1, num2)
+        return operators["/"](num1Int, num2Int)
     } else return "ERROR";
     
     
@@ -91,14 +97,29 @@ buttons.addEventListener("click", (event) => {
         } else {
             num2 += digit;
         }
-        
     } 
     if (target.className == "operator") {
-        operator = target.textContent
+        // if no operator, set operator to operator button pressed
+        if (operator == "") operator = target.textContent;
+        // if operator exists, solve num1 and num2, update display, update operator
+        else {
+            let solution = operate(num1, operator, num2);
+            displayText.textContent = solution;
+            num1 = solution;
+            num2 = "";
+            operator = target.textContent;
+        }
     }
     
     displayText.textContent = num1 + operator + num2
 
+    if (target.className == "solve") {
+        let solution = operate(num1, operator, num2);
+        displayText.textContent = solution;
+        num1 = solution;
+        num2 = "";
+    }
+    
 
     }
     
