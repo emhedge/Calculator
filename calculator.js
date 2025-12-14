@@ -1,3 +1,26 @@
+// button variables
+const numZero = document.querySelector("#numZero");
+const numOne = document.querySelector("#numOne");
+const numTwo = document.querySelector("#numTwo");
+const numThree = document.querySelector("#numThree");
+const numFour = document.querySelector("#numFour");
+const numFive = document.querySelector("#numFive");
+const numSix = document.querySelector("#numSix");
+const numSeven = document.querySelector("#numSeven");
+const numEight = document.querySelector("#numEight");
+const numNine = document.querySelector("#numNine");
+const plus = document.querySelector("#plus");
+const minus = document.querySelector("#minus");
+const quotient = document.querySelector("#quotient");
+const product = document.querySelector("#product");
+
+
+// update display function
+const display = document.querySelector("div#display");
+const displayText = document.createElement('p');
+displayText.textContent = "";
+display.appendChild(displayText);
+
 // operator functions
 const operators = {
     "+": (a, b) => a + b,
@@ -6,6 +29,24 @@ const operators = {
     "/": (a, b) => a / b,
 }
 
+const functions = {
+    "backspace": function() {
+        if (operator == "") {
+            num1 = num1.slice(0, num1.length - 1);
+        } else if (!operator == "" && num2 == "") {
+            operator = operator.slice(0, operator.length -1);
+        } else {
+            num2 = num2.slice(0, num2.length - 1);
+        }
+        displayText.textContent = num1 + operator + num2;
+    },
+    "allClear": function() {
+        num1 = "";
+        num2 = "";
+        operator = "";
+        displayText.textContent = "";
+    }
+}
 
 // const sum = function(arr) {return arr.reduce(((acc, obj) => acc + obj), 0)}
 
@@ -42,40 +83,24 @@ function operate(num1, operator, num2) {
         return operators["-"](num1Int, num2Int)
     } else if (operator === "*") {
         return operators["*"](num1Int, num2Int)
+    } else if (num2Int == 0 && operator == "/") {
+        alert("Who do you think I am, God? That's not possible.");
+        functions["allClear"]();
+        return "";
     } else if (operator === "/") {
         return operators["/"](num1Int, num2Int)
     } 
     
 }
 
-// button variables
-const numZero = document.querySelector("#numZero");
-const numOne = document.querySelector("#numOne");
-const numTwo = document.querySelector("#numTwo");
-const numThree = document.querySelector("#numThree");
-const numFour = document.querySelector("#numFour");
-const numFive = document.querySelector("#numFive");
-const numSix = document.querySelector("#numSix");
-const numSeven = document.querySelector("#numSeven");
-const numEight = document.querySelector("#numEight");
-const numNine = document.querySelector("#numNine");
-const plus = document.querySelector("#plus");
-const minus = document.querySelector("#minus");
-const quotient = document.querySelector("#quotient");
-const product = document.querySelector("#product");
 
 
-// update display function
-const display = document.querySelector("div#display");
-const displayText = document.createElement('p');
-displayText.textContent = "";
 
 // variables for num1, num2, and operator displayText; 
 // when a button is selected, have a switch/if condition to determine if it's num1 or num2
 // append the number to display as displayText
 
 
-display.appendChild(displayText);
 // function updateDisplay() {
 //     displayText.textContent = 
 // }
@@ -123,6 +148,14 @@ buttons.addEventListener("click", (event) => {
             num1 = solution;
             num2 = "";
         }
+    }
+
+    if (target.id == "backspace") {
+        functions["backspace"]();
+    }
+
+    if (target.id == "allClear") {
+        functions["allClear"]();
     }
 })
 
