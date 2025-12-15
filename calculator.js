@@ -13,6 +13,10 @@ const plus = document.querySelector("#plus");
 const minus = document.querySelector("#minus");
 const quotient = document.querySelector("#quotient");
 const product = document.querySelector("#product");
+const remainder = document.querySelector("#remainder");
+const equals = document.querySelector("#equals");
+const backspace = document.querySelector("#backspace");
+const allClear = document.querySelector("#allClear");
 
 
 // update display function
@@ -98,17 +102,6 @@ function operate(num1, operator, num2) {
 }
 
 
-
-
-// variables for num1, num2, and operator displayText; 
-// when a button is selected, have a switch/if condition to determine if it's num1 or num2
-// append the number to display as displayText
-
-
-// function updateDisplay() {
-//     displayText.textContent = 
-// }
-
 // button event handlers for various numbers/operators
 const buttons = document.querySelector("#buttons");
 buttons.addEventListener("click", (event) => {
@@ -173,13 +166,72 @@ buttons.addEventListener("click", (event) => {
     if (target.id == "allClear") {
         functions["allClear"]();
     }
-
-
 })
 
+document.addEventListener('keydown', function(event) {
+    if (event.repeat) {
+        return
+    }
 
-
-
-
-
-console.log(operate(10, "/", 2))
+    switch (event.key) {
+        case '0':
+            numZero.click();
+            break;
+        case '1':
+            numOne.click();
+            break;
+        case '2':
+            numTwo.click();
+            break;
+        case '3':
+            numThree.click();
+            break;
+        case '4':
+            numFour.click();
+            break;
+        case '5':
+            numFive.click();
+            break;
+        case '6':
+            numSix.click();
+            break;
+        case '7':
+            numSeven.click();
+            break;
+        case '8':
+            numEight.click();
+            break;
+        case '9':
+            numNine.click();
+            break;
+        case '+':
+            plus.click();
+            break;
+        case '-':
+            minus.click();
+            break;
+        case '*':
+            product.click();
+            break;
+        case '/':
+            quotient.click();
+            break;
+        case '%':
+            remainder.click();
+            break;
+        case '=':
+            equals.click();
+            break;
+        case 'Enter':
+            equals.click();
+            break;
+        case 'Backspace':
+            backspace.click();
+            break;
+        case 'Delete':
+            allClear.click();
+            break;
+        default:
+            break;
+    }
+});
