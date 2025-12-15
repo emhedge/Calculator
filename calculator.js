@@ -17,6 +17,7 @@ const remainder = document.querySelector("#remainder");
 const equals = document.querySelector("#equals");
 const backspace = document.querySelector("#backspace");
 const allClear = document.querySelector("#allClear");
+const decimal = document.querySelector("#decimal");
 
 
 // update display function
@@ -230,6 +231,9 @@ document.addEventListener('keydown', function(event) {
             break;
         case 'Delete':
             allClear.click();
+            break;
+        case '.':
+            decimal.click();
             break;
         default:
             break;
