@@ -29,28 +29,43 @@ body {
     flex: 1;
 }
 
-.rubberGrip {
+#rubberGripLeft {
     display: flex;
     flex-direction: column;
     flex: 1;
-    height: 100%;
     background-color: black;
     width: 25px;
-}
-
-#rubberGripLeft {
+    height: 850px;
     border-top-left-radius: 80px 80px;
     border-bottom-left-radius: 80px 80px;
+
 }
+
 #rubberGripRight {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: black;
+    width: 25px;
+    height: 850px;
     border-top-right-radius: 80px 80px;
     border-bottom-right-radius: 80px 80px;
 }
 
-#calc-middle {
+.rubberGripTop, .rubberGripBottom {
+    height: 10%;
+}
+
+.rubberGripMid {
+    height: 80%;
+}
+
+
+#calcMiddle {
     display: flex;
     flex-direction: column;
     flex: 1;
+    height: 850px;
     background-color: rgb(176, 2, 2);
 
 }
