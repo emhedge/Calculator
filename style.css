@@ -97,8 +97,6 @@ body {
 
 }
 
-
-
 #display-wrapper {
     position: relative;
     height: 160px;
@@ -150,12 +148,20 @@ div#display-cover {
     z-index: 1;
 }
 
-
+#display-cover p {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    margin-top: 60px;
+    font-family: cursive;
+    font-size: 34pt;
+}
 
 div#display-cover.animate.closed {
     opacity: 1;
     pointer-events: auto;
-    animation: 2s linear coverClosing forwards;
+    animation: 2s linear coverClosing forwards;   
 }
 
 div#display-cover.animate.opened {
