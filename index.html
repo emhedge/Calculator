@@ -22,12 +22,17 @@
 
         <container id="calc-middle">
             <container id="top">
-                <div id="display">
+                <div id="display-wrapper" >
+                    <div id="display"><p maxlength="13"></p></div>
+                    <div id="display-cover" class="closed"></div>
 
                 </div>
-                <container id="flip-top-div">
-                    <button id="flip-top-button"><img src="./images/flip-top-closed.png"></button>
-                </container>
+                
+                <div id="flip-top-div">
+                    <button id="flip-top-button">
+                        <img id="flip-top-img" src="./images/flip-top-closed.png">
+                    </button>
+                </div>
             </container>
 
             <container id="middle">

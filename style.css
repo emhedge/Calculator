@@ -8,6 +8,7 @@ body {
     align-items: center;
 }
 
+
 #title {
     display: flex;
     flex-direction: row;
@@ -73,7 +74,7 @@ body {
     align-items: center;
     display: block;
     line-height: 0;
-    font-size: 1;
+    font-size: 0;
     margin: 0 45px 30px 0;
     padding: 0;
     background-color: transparent;
@@ -81,18 +82,10 @@ body {
     width: min-content;
 }
 
-.open {
-    background-image: url("./images/flip-top-open.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 
-.closed {
-    background-image: url("./images/flip-top-closed.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+#displayWrapper.closed #display {
+    background-color: rgb(176, 2, 2);
+    border: 1px dashed rgba(0,0,0,0.4);
 }
 
 #calc-middle {
@@ -104,7 +97,21 @@ body {
 
 }
 
+
+
+#display-wrapper {
+    position: relative;
+    height: 160px;
+    width: 650px;
+    margin: auto;
+}
+
+#display, #display-cover {
+    box-sizing: border-box;
+}
+
 div#display {
+    /* z-index: 1;
     display: flex;
     flex: 1;
     justify-content: right;
@@ -119,11 +126,66 @@ div#display {
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
-    border-radius: 20px 20px;
+    border-radius: 20px 20px; */
+    position: relative;
+    top: 50px;
+    height: 110px;
+    width: 100%;      
+    background-color: rgb(164, 164, 164);
+    border-radius: 20px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    font-size: 62pt;
+    z-index: 0;
+}
+
+@keyframes coverOpening {
+    from {height: 105%; opacity: 1;}
+    to {height: 0%; opacity: 0;}
+}
+
+@keyframes coverClosing {
+    from {height: 0%; opacity: 0;}
+    to {height: 105%; opacity: 1;}
+}
+
+div#display-cover {
+    position: absolute;
+    top: 0;
+    left: -1%;
+    right: -1%;
+    height: 105%;
+    background-color: rgba(176, 2, 2, 0.8); 
+    pointer-events: none;  
+    border: 2px solid black;
+    border-bottom-right-radius: 20px;   
+    border-bottom-left-radius: 20px;
+    /* transition: opacity 0.8s ease;  */
+    opacity: 1;
+    z-index: 1;
+}
+
+
+
+div#display-cover.animate.closed {
+    opacity: 1;
+    pointer-events: auto;
+    animation: 2s linear coverClosing forwards;
+}
+
+div#display-cover.animate.opened {
+    opacity: 0;
+    pointer-events: auto;
+    animation: 2s linear coverOpening forwards;
 }
 
 div#display p {
     margin: 10px 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: right;
 }
 
 #buttons {

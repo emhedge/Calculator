@@ -19,13 +19,14 @@ const backspace = document.querySelector("#backspace");
 const allClear = document.querySelector("#all-clear");
 const decimal = document.querySelector("#decimal");
 const flipTopButton = document.querySelector("#flip-top-button");
-flipTopButton.classList.toggle(".closed");
+const flipTopImg = document.querySelector("#flip-top-img");
+const displayWrapper = document.querySelector("#display-wrapper");
+const displayCover = document.querySelector("#display-cover")
 
 // update display function
 const display = document.querySelector("div#display");
-const displayText = document.createElement('p');
+const displayText = document.querySelector('div#display p');
 displayText.textContent = "";
-display.appendChild(displayText);
 
 // operator functions
 const operators = {
@@ -102,6 +103,25 @@ function operate(num1, operator, num2) {
     } 
     
 }
+
+// flip-top event handler
+flipTopButton.addEventListener("click", () => {
+    // add animate for first time
+    if (!displayCover.classList.contains("animate")) {
+        displayCover.classList.add("animate");
+    }
+    
+    // true if the cover is currently closed
+    const isClosed = flipTopImg.src.includes("closed");
+
+    // toggle classes based on current state
+    displayCover.classList.toggle("closed", !isClosed)
+    displayCover.classList.toggle("opened", isClosed);
+
+    flipTopImg.src = isClosed
+        ? "./images/flip-top-open.png"
+        : "./images/flip-top-closed.png";
+})
 
 
 // button event handlers for various numbers/operators
