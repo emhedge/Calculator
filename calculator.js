@@ -132,13 +132,20 @@ function updateFontSize() {
     const text = num1 + operator + num2;
     displayText.textContent = text;
 
-    if (text.length > MAX_LENGTH) {
+    if (isMobile() == true && text.length > MAX_LENGTH) {
         let newFontSize = MAX_FONT_SIZE - (text.length - MAX_LENGTH) * 6;
         if (newFontSize < MIN_FONT_SIZE) newFontSize = MIN_FONT_SIZE;
         displayText.style.fontSize = newFontSize + "pt";
     } else {
         displayText.style.fontSize = MAX_FONT_SIZE + "pt";
     }
+}
+
+// mobile
+function isMobile() {
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/;
+    console.log('mobile detected')
+    return regex.test(navigator.userAgent);
 }
 
 
